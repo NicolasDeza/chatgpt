@@ -1,6 +1,18 @@
 <script setup>
-import ApiTokenManager from '@/Pages/API/Partials/ApiTokenManager.vue';
-import AppLayout from '@/Layouts/AppLayout.vue';
+// Ajout de l'initialisation d'Echo sans casser le code existant
+import Echo from "laravel-echo";
+import Pusher from "pusher-js";
+
+window.Pusher = Pusher;
+window.Echo = new Echo({
+    broadcaster: "pusher",
+    key: import.meta.env.VITE_PUSHER_APP_KEY,
+    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
+    forceTLS: true,
+});
+
+import ApiTokenManager from "@/Pages/API/Partials/ApiTokenManager.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 
 defineProps({
     tokens: Array,

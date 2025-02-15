@@ -54,6 +54,7 @@ Route::middleware([
     // ===========================
     Route::post('/chat/{conversation}/messages', [MessageController::class, 'store'])->name('messages.store'); // Envoyer un message
     Route::get('/chat/{conversation}/messages', [MessageController::class, 'index'])->name('messages.index'); // Lister les messages d'une conversation
+    Route::post('/chat/{conversation}/stream', [MessageController::class, 'streamMessage'])->name('messages.stream'); // Ajout de cette route
 
     // ===========================
     // 👤 Routes User
